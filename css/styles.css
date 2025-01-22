@@ -19,6 +19,7 @@ body {
 
 #page-wrapper {
   position: relative;
+  width: 100%;
 }
 
 header {
@@ -31,7 +32,6 @@ header {
   height: 18rem;
   z-index: 1000;
   padding: 5px 5px;
-
 }
 
 .banner-img {
@@ -175,8 +175,8 @@ form {
 }
 
 #copyright {
-  margin: 10px;
-  margin-top: 100px;
+  margin: 1rem;
+  margin-top: 9.6rem;
 } 
 
 
@@ -277,6 +277,60 @@ iframe {
     margin: 0;
     margin-top: 2rem;
     width: 100%;
+  }
+
+  @media (max-width: 500px) {
+    .banner-img {
+      height: 75%;
+    }
+    #nav-bar {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    #song-container {
+      width: 75%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1.2rem;
+
+    }
+    /* .column {
+      width: 75%;
+    }
+    .three-columns {
+      width: 75%;
+    } */
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    /* }
+    audio {
+      display: none;
+    } */
+    #img-joke-container {
+      width: 100%;
+    }
+    #text-joke-container {
+      width: 100%;
+    }
+    #contact-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    /* input {
+      width: 50%;
+    } */
   }
   
   /* .column {
