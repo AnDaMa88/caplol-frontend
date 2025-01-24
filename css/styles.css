@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 * {
-  /* border: 1px solid black; */
+  border: 1px solid black;
   margin: 0;
   padding: 0;
   box-sizing: border-box;  
@@ -179,6 +179,9 @@ form {
   #img-joke-container {
     width: 50%;
   }
+  #text-joke-container {
+    width: 50;
+  }
 }
 
 @media (max-width: 950px) {
@@ -236,7 +239,7 @@ form {
     width: 100%;
   }
   #text-joke-container {
-    width: 100%;
+    width: auto;
   }
   #contact-section {
     display: flex;
