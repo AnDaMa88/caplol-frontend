@@ -10,10 +10,11 @@
 html {
   font-size: 62.5%;
   color: #2B3133;
+  background-color: 	white; /*#f5fcff*/
 }
 
 body {
-  background-color: #ffffff;
+  
   font-family: 'Lato', sans-serif;
 }
 
@@ -31,7 +32,7 @@ header {
   top: 0;
   background-color: #ffffff;
   width: 100%;
-  height: 26rem;
+  height: 34rem;
 }
 
 .banner-img {
@@ -77,6 +78,11 @@ p {
   font-size: 1.6rem;
 }
 
+b {
+  font-size: 1.6rem;
+  color: rgb(204, 0, 255);
+}
+
 .main-content {
   display: flex;
   flex-wrap: wrap;
@@ -89,14 +95,15 @@ p {
   margin-right: 1rem;
 }
 
-#song-container {
+.song-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  width: 40%;
+  width: 30%;
   margin-bottom: 3rem;
+  flex-basis: calc(100% / 3 - 2.6rem);
 }
 
 #song-img {
@@ -107,23 +114,116 @@ p {
   background-color: #00AEEF;
 } */
 
-#img-joke-container {
-  width: 35%;
+.img-joke-container {
+  width: 30%;
+  flex-basis: calc(100% / 3 - 2.6rem);
+  
 }
 
-#img-joke {
+.img-joke {
   width: 100%;
   border-radius: 12px;
 }
 
-#text-joke-container {
-  width: auto;
+.text-joke-container {
+  width: 30%;
+  flex-basis: calc(100% / 3 - 2.6rem);
+  height: 35rem;
+  
+  padding: 1.8rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  line-height: 2.8rem;
+}
+/* hr {
+  border: none;
+  border-top: 1rem dotted #bbe0f0;
+  margin-bottom: 6rem;
+} */
+.border-style-1 {
+  border-top: 1rem dotted #bbe0f0;
+  border-bottom: 1rem dotted #bbe0f0;
+  /* border-radius: 6rem; */
+}
+.border-style-2 {
+  border-top: 1rem dotted #bbf0bb;
+  border-bottom: 1rem dotted #bbf0bb;
+  /* border-radius: 6rem; */
+}
+.border-style-3 {
+  border-top: 1rem dotted #fffba8;
+  border-bottom: 1rem dotted #fffba8;
+  /* border-radius: 6rem; */
 }
 
-#text-joke {
+.text-joke {
   width: auto;
   height: auto;
+  display: block;
 }
+
+.joke-credit {
+  color: #82adbd;
+  font-size: 1.2rem;
+}
+
+
+
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2rem;
+}
+
+.page-number,
+.prev,
+.next {
+  display: inline-block; /* Ensures block styling while keeping the element inline */
+  padding: 1rem 3rem; /* Controls the size and shape of the button */
+  background-color: #00AEEF;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.6rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+.prev:hover,
+.next:hover,
+.page-number:hover {
+  background-color: #0084b4;
+}
+
+.page-number.active {
+  font-weight: bold;
+  background-color: #3a4450;
+  color: white;
+}
+
+.ellipsis {
+  font-size: 2rem;
+  padding: 1rem;
+}
+
+.prev:disabled,
+.next:disabled {
+  background-color: #3a4450;
+  cursor: not-allowed;
+}
+
+
+
 
 footer {
   margin: 4.2rem;
@@ -173,23 +273,29 @@ form {
 } 
 
 @media (max-width: 1300px) {
-  #song-container {
-    width: 50%;
+  .song-container {
+    width: 40%;
+    flex-basis: unset;
   }
-  #img-joke-container {
-    width: 50%;
+  .img-joke-container {
+    width: 40%;
+    flex-basis: unset;
   }
-  #text-joke-container {
-    width: 50;
+  .text-joke-container {
+    width: 40;
+    flex-basis: unset;
   }
 }
 
 @media (max-width: 950px) {
-  #song-container {
-    width: 75%;
+  .song-container {
+    width: 70%;
   }
-  #img-joke-container {
-    width: 75%;
+  .img-joke-container {
+    width: 70%;
+  }
+  .text-joke-container {
+    width: 70%;
   }
   .banner-img {
     max-width: 100%;
@@ -225,7 +331,7 @@ form {
     align-items: center;
     gap: 1.2rem;
   }
-  #song-container {
+  .song-container {
     width: 80%;
     display: flex;
     flex-direction: row;
@@ -235,17 +341,39 @@ form {
     gap: 1.2rem;
 
   }
-  #img-joke-container {
+  .img-joke-container {
     width: 100%;
   }
-  #text-joke-container {
+  .text-joke-container {
     width: auto;
   }
   #contact-section {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    gap: 4rem;
+    margin: 0;
+    padding: 0;
+  }
+  #contact-text {
+    margin: 0;
+    padding: 0;
+  }
+  #mailing-list-container{
+    display: block;
+    /* flex-direction: column;
+    justify-content: space-around;
+    align-items: center; */
+  }
+
+  #mailing-list-label {
+    margin-top: 0;
+    padding: 0;
+  }
+  #form {
+    margin: 0;
+    padding: 0;
   }
 }
