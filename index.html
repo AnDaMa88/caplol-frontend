@@ -23,15 +23,22 @@
         </nav>
       </header>
 
-      <section class="main-content">
+      
 
-        <div class="song-container">
-          <img id="song-img" src="images/capLOL_ThemeSong.png" alt="Captain LOL Theme Song Artwork">
-          <audio controls> 
-            <source title=" Captain LOL Theme Song" src="audio/Captain Lol_PUNK_1.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-          </audio>
+      <section class="main-content">
+        
+        <div id="first-slot">
+          asdfasdfs
+          <!-- <div class="song-container">
+            <img id="song-img" src="images/capLOL_ThemeSong.png" alt="Captain LOL Theme Song Artwork">
+            <audio controls> 
+              <source title=" Captain LOL Theme Song" src="audio/Captain Lol_PUNK_1.mp3" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </div> -->
         </div>
+        
+        
 
         <div class="text-joke-container border-style-1">
           <div class="text-joke">
@@ -114,21 +121,24 @@
 
       <section class="pagination"> 
         <!-- Previous button -->
-        <button class="prev" onclick="changePage(currentPage - 1)">Previous</button>
+        <button id="prevPage" class="page-number">Previous</button>
 
         <!-- Page numbers -->
-        <span class="page-number" onclick="changePage(1)">1</span>
-        <span class="page-number" onclick="changePage(2)">2</span>
-        <span class="page-number" onclick="changePage(3)">3</span>
+        <button id="firstPage" class="page-number">First</button>
+
+        <span class="ellipsis">...</span>
+
+        <span id="currentPage" class="page-number">1</span>
+        
 
         <!-- Ellipsis (optional) -->
         <span class="ellipsis">...</span>
 
         <!-- Last page -->
-        <span class="page-number" onclick="changePage(10)">10</span>
+        <button id="lastPage" class="page-number">Last</button>
 
         <!-- Next button -->
-        <button class="next" onclick="changePage(currentPage + 1)">Next</button>
+        <button id="nextPage" class="page-number">Next</button>
       </section>
 
       <footer>
@@ -149,7 +159,7 @@
 
     
 
-
+    <script src="js/script.js"></script>
   </body>
   
   

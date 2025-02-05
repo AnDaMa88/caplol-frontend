@@ -95,19 +95,25 @@ b {
   margin-right: 1rem;
 }
 
+#first-slot {
+  width: 30%;
+  flex-basis: calc(100% / 3 - 2.6rem);
+}
+
 .song-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  width: 30%;
+  
   margin-bottom: 3rem;
-  flex-basis: calc(100% / 3 - 2.6rem);
+  
 }
 
 #song-img {
   width: 100%;
+  max-width: 500px;
 }
 
 /* audio::-webkit-media-controls-panel {
@@ -123,6 +129,11 @@ b {
 .img-joke {
   width: 100%;
   border-radius: 12px;
+}
+
+.text-joke-container.first-slot-text {
+  flex-basis: unset;
+  width: 100%;
 }
 
 .text-joke-container {
@@ -159,6 +170,11 @@ b {
   border-bottom: 1rem dotted #fffba8;
   /* border-radius: 6rem; */
 }
+.border-style-4 {
+  border-top: 1rem dotted #fca8ff;
+  border-bottom: 1rem dotted #fca8ff;
+  /* border-radius: 6rem; */
+}
 
 .text-joke {
   width: auto;
@@ -183,9 +199,10 @@ b {
   margin-top: 2rem;
 }
 
-.page-number,
-.prev,
-.next {
+
+#prev,
+#next,
+.page-number {
   display: inline-block; /* Ensures block styling while keeping the element inline */
   padding: 1rem 3rem; /* Controls the size and shape of the button */
   background-color: #00AEEF;
@@ -199,8 +216,8 @@ b {
   border: none;
 }
 
-.prev:hover,
-.next:hover,
+#prev:hover,
+#next:hover,
 .page-number:hover {
   background-color: #0084b4;
 }
@@ -273,6 +290,9 @@ form {
 } 
 
 @media (max-width: 1300px) {
+  #first-slot {
+    width: 40%
+  }
   .song-container {
     width: 40%;
     flex-basis: unset;
