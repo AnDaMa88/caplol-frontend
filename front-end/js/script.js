@@ -2,6 +2,7 @@ let amount = 9;
 let page = 1;
 let totalPages = 6;
 let allContainers;
+const scrollOffset = (document.querySelector("#header").offsetHeight) -80;
 
 document.addEventListener("DOMContentLoaded", function () {
     //if page = 1 then get 9 text jokes ... else get 10
@@ -11,35 +12,64 @@ document.addEventListener("DOMContentLoaded", function () {
     // fetchTest(); 
 });
 
-document.getElementById("prevPage").addEventListener("click", () => {
-    if (page > 1) {
-        page--;
+document.querySelectorAll(".prevPage").forEach(button => {
+        button.addEventListener("click", () => {
+        if (page > 1) {
+            page--;
+            fetchJokes();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+        
+    });
+});
+
+document.querySelectorAll(".nextPage").forEach(button => {
+    button.addEventListener("click", () => {
+        if (page < totalPages) {
+            page++;
+            fetchJokes();
+            window.scrollTo({ top: scrollOffset, behavior: "smooth" });
+        }
+    
+    });
+});
+
+document.querySelectorAll(".firstPage").forEach(button => {
+    button.addEventListener("click", () => {
+        page = 1;
         fetchJokes();
-    }
+        window.scrollTo({ top: scrollOffset, behavior: "smooth" });   
+    });
 });
 
-document.getElementById("nextPage").addEventListener("click", () => {
-    if (page < totalPages) {
-        page++;
+document.querySelectorAll(".lastPage").forEach(button => {
+    button.addEventListener("click", () => {
+        page = totalPages;
         fetchJokes();
-    }
+        window.scrollTo({ top: scrollOffset, behavior: "smooth" });  
+    });
 });
 
-document.getElementById("firstPage").addEventListener("click", () => {
-    page = 1;
-    fetchJokes();
-});
 
-document.getElementById("lastPage").addEventListener("click", () => {
-    page = totalPages;
-    fetchJokes();
-});
 
 function fetchJokes() {
     
-    document.getElementById("currentPage").innerHTML = page;
+    document.querySelectorAll(".currentPage").forEach(element => {
+        element.innerHTML = page;
+    });
 
     if (page < 4) {
+        allContainers.forEach(container => {
+            container.classList.add("img-joke-container");
+            container.classList.remove("text-joke-container", "border-style-4");
+            if (!container.querySelector("img.img-joke")) {
+                const img = document.createElement("img");
+                img.classList.add("img-joke");
+                container.prepend(img);
+            }
+        })
+
+
         handleFirstSlot(page);
         fetchTextJokes(page, amount);
         fetchImageJokes(page);
@@ -106,6 +136,7 @@ function fetchTextJokes(page, amount) {
                 if (joke) {
                     container.innerHTML = `<p class="text-joke">${joke.joke_text}</p>
                                            <p class="joke-credit">${joke.joke_credit}</p>`;
+                    container.style.display = "flex"; //show container when filled
                 }
             });
             //remove extra containers on last page
