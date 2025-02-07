@@ -147,7 +147,7 @@ b {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  gap: 2.8rem;
   line-height: 2.8rem;
 }
 /* hr {
@@ -180,11 +180,12 @@ b {
   width: auto;
   height: auto;
   display: block;
+  font-size: 1.8rem;
 }
 
 .joke-credit {
   color: #82adbd;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
 }
 
 
@@ -200,12 +201,11 @@ b {
 }
 
 
-#prev,
-#next,
+.page-nav,
 .page-number {
   display: inline-block; /* Ensures block styling while keeping the element inline */
   padding: 1rem 3rem; /* Controls the size and shape of the button */
-  background-color: #00AEEF;
+  background-color: #c15cfc;
   color: white;
   text-align: center;
   text-decoration: none;
@@ -215,11 +215,18 @@ b {
   transition: background-color 0.3s ease;
   border: none;
 }
+.page-number {
+  cursor: default;
+}
 
-#prev:hover,
-#next:hover,
-.page-number:hover {
-  background-color: #0084b4;
+.page-nav:hover {
+  background-color: #9547c2;
+}
+
+.disabled {
+  pointer-events: none;  /* Prevents clicking */
+  opacity: 0.5;  /* Makes it look faded */
+  cursor: not-allowed;  /* Shows a disabled cursor */
 }
 
 .page-number.active {

@@ -1,13 +1,13 @@
-let amount = 9;
+// let amount = 9;
 let page = 1;
 let totalPages = 6;
-let allContainers;
+let imgContainers;
 const scrollOffset = (document.querySelector("#header").offsetHeight) -80;
 
 document.addEventListener("DOMContentLoaded", function () {
     //if page = 1 then get 9 text jokes ... else get 10
     //if page != 1 then hide song container show first text container
-    allContainers = document.querySelectorAll(".main-content > .img-joke-container");
+    imgContainers = document.querySelectorAll(".main-content > .img-joke-container");
     fetchJokes(); 
     // fetchTest(); 
 });
@@ -17,7 +17,7 @@ document.querySelectorAll(".prevPage").forEach(button => {
         if (page > 1) {
             page--;
             fetchJokes();
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            window.scrollTo({ top: scrollOffset, behavior: "smooth" });
         }
         
     });
@@ -54,35 +54,34 @@ document.querySelectorAll(".lastPage").forEach(button => {
 
 function fetchJokes() {
     
-    document.querySelectorAll(".currentPage").forEach(element => {
-        element.innerHTML = page;
-    });
+    updatePaginationButtons();
+
+    handleFirstSlot(page);
 
     if (page < 4) {
-        allContainers.forEach(container => {
+        imgContainers.forEach(container => {
             container.classList.add("img-joke-container");
             container.classList.remove("text-joke-container", "border-style-4");
+            container.style.display = "flex";
             if (!container.querySelector("img.img-joke")) {
                 const img = document.createElement("img");
                 img.classList.add("img-joke");
                 container.prepend(img);
             }
         })
-
-
-        handleFirstSlot(page);
-        fetchTextJokes(page, amount);
+        
+        fetchTextJokes(page);
         fetchImageJokes(page);
     } else {
-        allContainers.forEach(container => {
+        imgContainers.forEach(container => {
             container.classList.remove("img-joke-container");
             container.classList.add("text-joke-container", "border-style-4");
+            container.style.display = "flex";
             const img = container.querySelector("img.img-joke");
             if (img) {img.remove();}
         })
-        amount = 15;
-        handleFirstSlot(page);
-        fetchTextJokes(page, amount);
+        
+        fetchTextJokes(page);
 
         
     }
@@ -123,20 +122,24 @@ function handleFirstSlot(page) {
 
 
 
-function fetchTextJokes(page, amount) {
-    fetch(`http://localhost:8080/api/jokes/text?page=${page}&amount=${amount}`)
+function fetchTextJokes(page) {
+    fetch(`http://localhost:8080/api/jokes/text?page=${page}`)
         .then(response => response.json())
         .then(data => {
+            console.log(page);
             console.log("Fetched Text Jokes:", data);  // Debugging output
             totalPages = data.totalPages;
             const jokeContainers = document.querySelectorAll('.text-joke-container');
+
+            jokeContainers.forEach(container => {
+                container.innerHTML = ""; // Clear all previous jokes before inserting new ones
+            });
             
-            jokeContainers.forEach((container, index) => {
-                const joke = data.jokes[index];
-                if (joke) {
-                    container.innerHTML = `<p class="text-joke">${joke.joke_text}</p>
+            data.jokes.forEach((joke, index) => {
+                if (jokeContainers[index]) {
+                    jokeContainers[index].innerHTML = `<p class="text-joke">${joke.joke_text}</p>
                                            <p class="joke-credit">${joke.joke_credit}</p>`;
-                    container.style.display = "flex"; //show container when filled
+                    jokeContainers[index].style.display = "flex"; //show container when filled
                 }
             });
             //remove extra containers on last page
@@ -144,6 +147,12 @@ function fetchTextJokes(page, amount) {
                 for (let i = data.jokes.length; i < jokeContainers.length; i++) {
                     jokeContainers[i].style.display = "none";
                 }
+            } else {
+                jokeContainers.forEach(container => {
+                    if (container.style.display === "none") {
+                        container.style.display = "flex"; // Ensure it's visible again
+                    }
+                });
             }
         })
         .catch(error => console.error("Error fetching jokes:", error));
@@ -165,6 +174,37 @@ function fetchImageJokes(page) {
         })
         .catch(error => console.error("Error fetching jokes:", error));
 }
+
+function updatePaginationButtons() {
+    document.querySelectorAll(".currentPage").forEach(element => {
+        element.innerHTML = page;
+    });
+    document.querySelectorAll(".prevPage").forEach(button => {
+        button.classList.toggle("disabled", page === 1);
+    });
+
+    document.querySelectorAll(".nextPage").forEach(button => {
+        button.classList.toggle("disabled", page === totalPages);
+    });
+
+    document.querySelectorAll(".firstPage").forEach(button => {
+        button.classList.toggle("disabled", page === 1);
+    });
+
+    document.querySelectorAll(".lastPage").forEach(button => {
+        button.classList.toggle("disabled", page === totalPages);
+    });
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
