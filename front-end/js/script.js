@@ -52,11 +52,11 @@ document.querySelectorAll(".lastPage").forEach(button => {
 
 
 
-function fetchJokes() {
+async function fetchJokes() {
     
     updatePaginationButtons();
 
-    handleFirstSlot(page);
+    await handleFirstSlot(page);
 
     if (page < 4) {
         imgContainers.forEach(container => {
@@ -92,28 +92,27 @@ function fetchJokes() {
 
 
 
-function handleFirstSlot(page) {
+async function handleFirstSlot(page) {
     const container = document.getElementById("first-slot")
     if (page === 1) {
-        fetch(`http://localhost:8080/api/jokes/song`)
-        .then(response => response.json())
-        .then(data => {
-            console.log("Fetched Data: ", data);
-            console.log("Song Image:", data.songImage[0]); 
-            console.log("Song Audio:", data.songAudio[0]);
-            
-            const songImage = data.songImage[0]?.image_path;  
-            const songAudio = data.songAudio[0]?.image_path;
+        const response = await fetch(`http://localhost:8080/api/jokes/song`);
+        const data = await response.json();
 
-            container.innerHTML = `
-                <div class="song-container">
-                    <img id="song-img" src="${songImage}" alt="Captain LOL Theme Song Artwork">
-                    <audio controls> 
-                        <source title="Captain LOL Theme Song" src="${songAudio}" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>
-                </div>`;
-        })
+        console.log("Fetched Data: ", data);
+        console.log("Song Image:", data.songImage[0]); 
+        console.log("Song Audio:", data.songAudio[0]);
+            
+        const songImage = data.songImage[0]?.image_path;  
+        const songAudio = data.songAudio[0]?.image_path;
+
+        container.innerHTML = `
+            <div class="song-container">
+                <img id="song-img" src="${songImage}" alt="Captain LOL Theme Song Artwork">
+                <audio controls> 
+                    <source title="Captain LOL Theme Song" src="${songAudio}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>`;  
     } else {
         container.innerHTML = `
                 <div class="text-joke-container first-slot-text border-style-3"></div>`; //modify css for text joke in first slot
