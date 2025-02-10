@@ -7,7 +7,7 @@ const scrollOffset = (document.querySelector("#header").offsetHeight) -80;
 document.addEventListener("DOMContentLoaded", function () {
     //if page = 1 then get 9 text jokes ... else get 10
     //if page != 1 then hide song container show first text container
-    imgContainers = document.querySelectorAll(".main-content > .img-joke-container");
+    imgContainers = document.querySelectorAll(".column > .img-joke-container");
     fetchJokes(); 
     // fetchTest(); 
 });
@@ -81,14 +81,22 @@ async function fetchJokes() {
             if (img) {img.remove();}
         })
         
-        fetchTextJokes(page);
-
-        
-    }
+        console.log("page: "+ page + "    total pages: " + totalPages);
+        if (page === totalPages) {
+            fetchTextJokes(page).then( () => adjustColumns());
+        } else {
+            // Restore all columns when navigating away from the last page
+            document.querySelectorAll(".column").forEach(column => {
+                column.style.display = "flex"; // Ensure all columns are visible
+                column.style.width = "33%"; // Reset to default width
+                column.classList.remove("hidden");
+            });
     
+        fetchTextJokes(page);
+               
+        }    
+    }
 }
-
-
 
 
 
@@ -112,6 +120,7 @@ async function handleFirstSlot(page) {
                     <source title="Captain LOL Theme Song" src="${songAudio}" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
+                <div class="separator"></div>
             </div>`;  
     } else {
         container.innerHTML = `
@@ -121,8 +130,8 @@ async function handleFirstSlot(page) {
 
 
 
-function fetchTextJokes(page) {
-    fetch(`http://localhost:8080/api/jokes/text?page=${page}`)
+async function fetchTextJokes(page) {
+    return fetch(`http://localhost:8080/api/jokes/text?page=${page}`)
         .then(response => response.json())
         .then(data => {
             console.log(page);
@@ -137,7 +146,8 @@ function fetchTextJokes(page) {
             data.jokes.forEach((joke, index) => {
                 if (jokeContainers[index]) {
                     jokeContainers[index].innerHTML = `<p class="text-joke">${joke.joke_text}</p>
-                                           <p class="joke-credit">${joke.joke_credit}</p>`;
+                                           <p class="joke-credit">${joke.joke_credit}</p>
+                                           <div class="separator"></div>`;
                     jokeContainers[index].style.display = "flex"; //show container when filled
                 }
             });
@@ -145,11 +155,13 @@ function fetchTextJokes(page) {
             if (page === totalPages) {
                 for (let i = data.jokes.length; i < jokeContainers.length; i++) {
                     jokeContainers[i].style.display = "none";
+                    jokeContainers[i].classList.add("hidden");
                 }
             } else {
                 jokeContainers.forEach(container => {
                     if (container.style.display === "none") {
-                        container.style.display = "flex"; // Ensure it's visible again
+                        container.style.display = "flex";
+                        container.classList.remove("hidden"); // Ensure it's visible again
                     }
                 });
             }
@@ -167,7 +179,8 @@ function fetchImageJokes(page) {
             jokesContainer.forEach((container, index) => {
                 const joke = data.jokes[index];
                 if (joke) {
-                    container.innerHTML = `<img class="img-joke" src="${joke.image_path}" alt="Joke Image">`;
+                    container.innerHTML = `<img class="img-joke" src="${joke.image_path}" alt="Joke Image">
+                                            <div class="separator"></div>`;
                 }
             });
         })
@@ -197,7 +210,34 @@ function updatePaginationButtons() {
 
 
 
+function adjustColumns() {
+    const columns = document.querySelectorAll(".column");
+    
+    let visibleColumns = 0;
 
+    
+
+    columns.forEach(column => {
+        const isHidden = column.querySelector(".hidden");
+        if (isHidden) {
+            column.style.display = "none";
+            
+        } else {
+            column.style.display = "flex";
+            visibleColumns++;
+        }
+    });
+
+    const mainContent = document.querySelector(".main-content");
+    if (visibleColumns === 2) {
+        mainContent.style.justifyContent = "center";
+    } else if (visibleColumns === 1) {
+        mainContent.style.justifyContent = "center";
+        columns.forEach(column => column.style.width = "50%");
+    } else {
+        mainContent.style.justifyContent = "space-evenly";
+    }
+}
 
 
 
