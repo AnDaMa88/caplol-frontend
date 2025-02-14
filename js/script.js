@@ -82,20 +82,21 @@ async function fetchJokes() {
         })
         
         console.log("page: "+ page + "    total pages: " + totalPages);
-        if (page === totalPages) {
-            fetchTextJokes(page).then( () => adjustColumns());
-        } else {
-            // Restore all columns when navigating away from the last page
-            document.querySelectorAll(".column").forEach(column => {
-                column.style.display = "flex"; // Ensure all columns are visible
-                column.style.width = "33%"; // Reset to default width
-                column.classList.remove("hidden");
-            });
-    
-        fetchTextJokes(page);
-               
-        }    
+          
     }
+    if (page === totalPages) {
+        fetchTextJokes(page).then( () => adjustColumns());
+    } else {
+        // Restore all columns when navigating away from the last page
+        document.querySelectorAll(".column").forEach(column => {
+            column.style.display = "flex"; // Ensure all columns are visible
+            column.style.width = "33%"; // Reset to default width
+            column.classList.remove("hidden");
+        });
+
+    fetchTextJokes(page);
+           
+    }  
 }
 
 
@@ -134,7 +135,7 @@ async function fetchTextJokes(page) {
     return fetch(`http://localhost:8080/api/jokes/text?page=${page}`)
         .then(response => response.json())
         .then(data => {
-            console.log(page);
+            console.log("Page: " + page);
             console.log("Fetched Text Jokes:", data);  // Debugging output
             totalPages = data.totalPages;
             const jokeContainers = document.querySelectorAll('.text-joke-container');
