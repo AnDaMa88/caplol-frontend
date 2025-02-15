@@ -104,7 +104,7 @@ async function fetchJokes() {
 async function handleFirstSlot(page) {
     const container = document.getElementById("first-slot")
     if (page === 1) {
-        const response = await fetch(`http://localhost:8080/api/jokes/song`);
+        const response = await fetch(`/api/jokes/song`);
         const data = await response.json();
 
         console.log("Fetched Data: ", data);
@@ -132,7 +132,7 @@ async function handleFirstSlot(page) {
 
 
 async function fetchTextJokes(page) {
-    return fetch(`http://localhost:8080/api/jokes/text?page=${page}`)
+    return fetch(`/api/jokes/text?page=${page}`)
         .then(response => response.json())
         .then(data => {
             console.log("Page: " + page);
@@ -171,7 +171,7 @@ async function fetchTextJokes(page) {
 }
 
 function fetchImageJokes(page) {
-    fetch(`http://localhost:8080/api/jokes/image?page=${page}`)
+    fetch(`/api/jokes/image?page=${page}`)
         .then(response => response.json())
         .then(data => {
             console.log("Fetched image Jokes:", data);  // Debugging output
@@ -241,22 +241,4 @@ function adjustColumns() {
 }
 
 
-
-
-
-
-
-
-
-function fetchTest() {
-    fetch(`http://localhost:8080/api/jokes/text?page=1&amount=1`)
-    .then(response => response.json())
-    .then(data => {
-        const textContainers = document.querySelectorAll('.test-container');
-        textContainers.forEach((container, index) => {
-            const joke = data.jokes[index]; 
-            container.innerHTML = `aso;dkhfj;alkwfjlkasjdflkjflkjwefjwe  CHASDCHASDKCHJWALEJ d klashjdlkjs dlk cjlk`;
-        })
-    })
-}
-
+// test
