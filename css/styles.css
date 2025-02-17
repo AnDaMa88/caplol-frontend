@@ -14,7 +14,6 @@ html {
 }
 
 body {
-  
   font-family: 'Lato', sans-serif;
 }
 
@@ -60,6 +59,9 @@ nav {
   transition: background-color 0.3s ease;
 }
 
+.nav-link:hover {
+  background-color: #0084b4;
+}
 
 .top-line {
   background-color: #ED1C24;
@@ -70,11 +72,21 @@ nav {
   margin-top: 3rem;
   border-radius: 4rem;
   border: none;
- 
 }
 
-.nav-link:hover {
-  background-color: #0084b4; /* Darkens the button color on hover */
+.loader {
+  position: fixed;      /* Fix it to the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9); /* A light translucent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;     
+  font-size: 2rem;
+  color: #333;
 }
 
 h1 {
@@ -351,44 +363,38 @@ form {
 } 
 
 @media (max-width: 1300px) {
-  #first-slot {
-    width: 40%
+  .main-content {
+    display: flex;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    justify-content: space-evenly; 
+    align-items: center;
   }
-  .song-container {
-    width: 40%;
-    flex-basis: unset;
-  }
-  .img-joke-container {
-    width: 40%;
-    flex-basis: unset;
-  }
-  .text-joke-container {
-    width: 40;
-    flex-basis: unset;
+  .column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 
-@media (max-width: 950px) {
-  .song-container {
-    width: 70%;
-  }
-  .img-joke-container {
-    width: 70%;
-  }
-  .text-joke-container {
-    width: 70%;
+@media (max-width: 900px) {
+  header {
+    height: 20%;
   }
   .banner-img {
-    max-width: 100%;
-    height: auto;
-    max-height: 80%;
+    width: 90%;
   }
-  .nav-link{
-    font-size: 1.4rem;
+  .nav-link {
+    padding: 0.8rem 1.6rem;
+    font-size: 1.6rem;
   }
-  header {
-    height: 17.5%;
-  }
+  .page-nav,
+  .page-number {
+    padding: 0.8rem 1.6rem; /* Controls the size and shape of the button */
+    font-size: 1.6rem;
+  } 
 }
 
 
@@ -402,7 +408,7 @@ form {
   }
   .nav-link {
     padding: 0.8rem 1.6rem;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   } 
   #nav-bar {
     display: flex;
@@ -412,8 +418,13 @@ form {
     align-items: center;
     gap: 1.2rem;
   }
+  .page-nav,
+  .page-number {
+    padding: 0.8rem 1.6rem; 
+    font-size: 1.4rem;
+  }
   .song-container {
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -457,4 +468,5 @@ form {
     margin: 0;
     padding: 0;
   }
+  
 }

@@ -8,15 +8,17 @@ document.addEventListener("DOMContentLoaded", function () {
     //if page = 1 then get 9 text jokes ... else get 10
     //if page != 1 then hide song container show first text container
     imgContainers = document.querySelectorAll(".column > .img-joke-container");
-    fetchJokes(); 
+    hideLoadingScreen(); 
     // fetchTest(); 
 });
+
 
 document.querySelectorAll(".prevPage").forEach(button => {
         button.addEventListener("click", () => {
         if (page > 1) {
             page--;
-            fetchJokes();
+            showLoadingScreen();
+            hideLoadingScreen();
             window.scrollTo({ top: scrollOffset, behavior: "smooth" });
         }
         
@@ -27,7 +29,8 @@ document.querySelectorAll(".nextPage").forEach(button => {
     button.addEventListener("click", () => {
         if (page < totalPages) {
             page++;
-            fetchJokes();
+            showLoadingScreen();
+            hideLoadingScreen();
             window.scrollTo({ top: scrollOffset, behavior: "smooth" });
         }
     
@@ -37,7 +40,8 @@ document.querySelectorAll(".nextPage").forEach(button => {
 document.querySelectorAll(".firstPage").forEach(button => {
     button.addEventListener("click", () => {
         page = 1;
-        fetchJokes();
+        showLoadingScreen();
+        hideLoadingScreen();
         window.scrollTo({ top: scrollOffset, behavior: "smooth" });   
     });
 });
@@ -45,7 +49,8 @@ document.querySelectorAll(".firstPage").forEach(button => {
 document.querySelectorAll(".lastPage").forEach(button => {
     button.addEventListener("click", () => {
         page = totalPages;
-        fetchJokes();
+        showLoadingScreen();
+        hideLoadingScreen();
         window.scrollTo({ top: scrollOffset, behavior: "smooth" });  
     });
 });
@@ -90,7 +95,7 @@ async function fetchJokes() {
         // Restore all columns when navigating away from the last page
         document.querySelectorAll(".column").forEach(column => {
             column.style.display = "flex"; // Ensure all columns are visible
-            column.style.width = "33%"; // Reset to default width
+            // column.style.width = "33%"; // Reset to default width
             column.classList.remove("hidden");
         });
 
@@ -234,11 +239,29 @@ function adjustColumns() {
         mainContent.style.justifyContent = "center";
     } else if (visibleColumns === 1) {
         mainContent.style.justifyContent = "center";
-        columns.forEach(column => column.style.width = "50%");
+        // columns.forEach(column => column.style.width = "50%");
     } else {
         mainContent.style.justifyContent = "space-evenly";
     }
 }
 
+async function hideLoadingScreen() {
+    try {
+        // Wait for your fetch function to complete loading data into the DOM
+        await fetchJokes();
+      } catch (error) {
+        console.error("Error loading jokes:", error);
+      } finally {
+        // Wait 2 seconds before hiding the loader and showing the main content
+        setTimeout(() => {
+          document.getElementById('loader').style.display = 'none';
+          document.querySelector('.main-content').style.display = 'flex';
+        }, 1000); // 2000 milliseconds = 2 seconds
+      }
+}
 
-// test
+function showLoadingScreen() {
+    document.getElementById('loader').style.display = 'flex';
+    document.querySelector('.main-content').style.display = 'none';
+}
+//end
