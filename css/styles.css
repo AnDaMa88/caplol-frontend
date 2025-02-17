@@ -262,7 +262,7 @@ color: rgb(146, 9, 109);
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 1rem;
   margin-top: 2rem;
 }
 
@@ -407,7 +407,7 @@ form {
     width: 90%;
   }
   .nav-link {
-    padding: 0.8rem 1.6rem;
+    padding: 0.8rem 1.2rem;
     font-size: 1.4rem;
   } 
   #nav-bar {
@@ -416,11 +416,21 @@ form {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 1.2rem;
+    gap: 1rem;
+    width: 100%;
+  }
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 2rem;
+    width: 100%;
   }
   .page-nav,
   .page-number {
-    padding: 0.8rem 1.6rem; 
+    padding: 0.8rem 1.2rem; 
     font-size: 1.4rem;
   }
   .song-container {

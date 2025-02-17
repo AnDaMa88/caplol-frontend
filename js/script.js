@@ -256,7 +256,7 @@ async function hideLoadingScreen() {
         setTimeout(() => {
           document.getElementById('loader').style.display = 'none';
           document.querySelector('.main-content').style.display = 'flex';
-        }, 1000); // 2000 milliseconds = 2 seconds
+        }, 500); // 2000 milliseconds = 2 seconds
       }
 }
 
