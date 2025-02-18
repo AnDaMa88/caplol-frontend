@@ -1,4 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@font-face {
+  font-family: 'Benoda-Text';
+  src: url('/fonts/Benoda-Text.otf') format('opentype'),
+       url('/fonts/Benoda-Text.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 * {
   /* border: 1px solid black; */
@@ -14,7 +21,7 @@ html {
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Benoda-Text', 'Lato', sans-serif;
 }
 
 #page-wrapper {
@@ -188,14 +195,14 @@ b {
   height: 35rem; */
   
   
-  padding: 1.8rem;
+  /* padding: 1.6rem; */
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2.8rem;
-  line-height: 2.8rem;
+  line-height: 2.4rem;
 }
 /* hr {
   border: none;
@@ -224,10 +231,18 @@ b {
 }
 
 .text-joke {
-  width: auto;
+  width: 100%;
   height: auto;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
   font-size: 1.8rem;
+  max-width: 500px;
+  margin: 1rem;
+  padding: 3rem;
+  gap: 0.6rem;
+  
 }
 
 .joke-credit {
@@ -236,13 +251,13 @@ b {
 }
 
 .dialogue-1 {
-  color: rgb(206, 117, 9);
+  color: #FF1A00;
   font-weight: 900;
   font-size: 2rem;
   margin-right: 1.6rem;
 }
 .dialogue-2 {
-  color: rgb(39, 213, 8);
+  color: #FF7518;
   font-weight: bold;
 }
 .dialogue-3 {
@@ -250,10 +265,10 @@ b {
   font-weight: bold;
 }
 .question {
-  color: rgb(151, 132, 6);
+  color: #98076f;
 }
 .answer {
-color: rgb(146, 9, 109);
+color: #22a50a;
 }
 
 
