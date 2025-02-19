@@ -5,7 +5,7 @@
        url('/fonts/Benoda-Text.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-}
+} 
 
 * {
   /* border: 1px solid black; */
@@ -56,7 +56,7 @@ nav {
 
 .nav-link {
   display: inline-block; /* Ensures block styling while keeping the element inline */
-  padding: 1rem 3rem; /* Controls the size and shape of the button */
+  padding: 1.2rem 3rem; /* Controls the size and shape of the button */
   background-color: #FFF200;
   color: rgb(40, 40, 40);
   text-align: center;
@@ -65,14 +65,16 @@ nav {
   border-radius: 50px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  line-height: 1.8rem;
+  height: 5rem;
 }
 
 .nav-link:hover {
-  background-color: #0084b4;
+  background-color: #c5bb00;
 }
 
 .top-line {
-  background-color: #ED1C24;
+  background-color: #ea2e35;
   height: 1rem;
   width: 80%;
   margin-left: auto;
@@ -272,7 +274,9 @@ b {
 color: #22a50a;
 }
 
-
+button {
+	font-family: 'Benoda-Text', 'Lato', sans-serif;
+}
 
 .pagination {
   display: flex;
@@ -283,10 +287,12 @@ color: #22a50a;
 }
 
 
-.page-nav,
-.page-number {
-  display: inline-block; /* Ensures block styling while keeping the element inline */
-  padding: 1rem 3rem; /* Controls the size and shape of the button */
+.page-nav {
+  display: flex; /* Ensures block styling while keeping the element inline */
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 1.3rem 3rem; /* Controls the size and shape of the button */
   background-color: #00AEEF;
   color: black;
   text-align: center;
@@ -297,12 +303,29 @@ color: #22a50a;
   transition: background-color 0.3s ease;
   border: none;
 }
+.pagination-text{
+  
+  padding-bottom: 0.8rem;
+}
 .page-number {
+  display: inline-block; /* Ensures block styling while keeping the element inline */
+  padding: 1.2rem 3rem; /* Controls the size and shape of the button */
+  background-color: #00AEEF;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.6rem;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  line-height: 1.8rem;
+  height: 5rem;
   cursor: default;
 }
 
 .page-nav:hover {
-  background-color: #9547c2;
+  background-color: #0084b4;
 }
 
 .disabled {

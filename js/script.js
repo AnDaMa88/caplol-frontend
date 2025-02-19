@@ -109,7 +109,7 @@ async function fetchJokes() {
 async function handleFirstSlot(page) {
     const container = document.getElementById("first-slot")
     if (page === 1) {
-        const response = await fetch(`/api/jokes/song`);
+        const response = await fetch(`http://localhost:8080/api/jokes/song`);
         const data = await response.json();
 
         console.log("Fetched Data: ", data);
@@ -137,7 +137,7 @@ async function handleFirstSlot(page) {
 
 
 async function fetchTextJokes(page) {
-    return fetch(`/api/jokes/text?page=${page}`)
+    return fetch(`http://localhost:8080/api/jokes/text?page=${page}`)
         .then(response => response.json())
         .then(data => {
             console.log("Page: " + page);
@@ -176,7 +176,7 @@ async function fetchTextJokes(page) {
 }
 
 function fetchImageJokes(page) {
-    fetch(`/api/jokes/image?page=${page}`)
+    fetch(`http://localhost:8080/api/jokes/image?page=${page}`)
         .then(response => response.json())
         .then(data => {
             console.log("Fetched image Jokes:", data);  // Debugging output
