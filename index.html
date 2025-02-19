@@ -24,12 +24,14 @@
       </header>
 
       <section class="pagination"> 
-        <button id="prevPage" class="page-nav prevPage"><span class="pagination-text">Previous</span></button>
         <button id="firstPage" class="page-nav firstPage"><span class="pagination-text">First</span></button>
-        <span class="ellipsis">...</span>
-        <span id="currentPage" class="page-number currentPage">1</span>
-        <span class="ellipsis">...</span>
         <button id="lastPage" class="page-nav lastPage"><span class="pagination-text">Last</span></button>
+        <div class="pagination-spacer">
+          <span class="ellipsis" id="ellipsis-1">...</span>
+          <span id="currentPage" class="page-number currentPage">1</span>
+          <span class="ellipsis" id="ellipsis-2">...</span>
+        </div>
+        <button id="prevPage" class="page-nav prevPage"><span class="pagination-text">Previous</span></button>
         <button id="nextPage" class="page-nav nextPage"><span class="pagination-text">Next</span></button>
       </section>
 
@@ -152,12 +154,14 @@
       </section>
 
       <section class="pagination"> 
-        <button id="prevPage2" class="page-nav prevPage">Previous</button>
-        <button id="firstPage2" class="page-nav firstPage">First</button>
-        <span class="ellipsis">...</span>
-        <span id="currentPage2" class="page-number currentPage">1</span>
-        <span class="ellipsis">...</span>
         <button id="lastPage2" class="page-nav lastPage">Last</button>
+        <button id="firstPage2" class="page-nav firstPage">First</button>
+        <div class="pagination-spacer">
+          <span class="ellipsis">...</span>
+          <span id="currentPage2" class="page-number currentPage">1</span>
+          <span class="ellipsis">...</span>
+        </div>
+        <button id="prevPage2" class="page-nav prevPage">Previous</button>
         <button id="nextPage2" class="page-nav nextPage">Next</button>
       </section>
 
