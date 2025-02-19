@@ -1,11 +1,11 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 @font-face {
   font-family: 'Benoda-Text';
   src: url('/fonts/Benoda-Text.otf') format('opentype'),
        url('/fonts/Benoda-Text.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-} */
+}
 
 * {
   /* border: 1px solid black; */
@@ -18,10 +18,11 @@ html {
   font-size: 62.5%;
   color: #2B3133;
   background-color: 	white; /*#f5fcff*/
+  font-family: 'Benoda-Text', 'Lato', sans-serif;
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Benoda-Text', 'Lato', sans-serif;
 }
 
 #page-wrapper {
