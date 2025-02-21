@@ -152,7 +152,7 @@ async function fetchTextJokes(page) {
             data.jokes.forEach((joke, index) => {
                 if (jokeContainers[index]) {
                     jokeContainers[index].innerHTML = `<p class="text-joke">${joke.joke_text}</p>
-                                           <p class="joke-credit">${joke.joke_credit}</p>
+                                           <p class="joke-credit">Joke by ${joke.joke_credit}</p>
                                            <div class="separator"></div>`;
                     jokeContainers[index].style.display = "flex"; //show container when filled
                 }
