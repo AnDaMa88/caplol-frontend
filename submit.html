@@ -33,11 +33,88 @@
         <p> </p>
       </div>
 
-      <section class="main-content" style="display: none;">
-
-        <p id="release-date"><Strong>SUBMIT YOUR OWN JOKES TO THIS SITE!  COMING SOON!</Strong>
-        </p>
+      <section class="main-content-submit">
+        <p id="message" class="instructions"></p>
         
+
+        <div id="login-container" class="user-container">
+          <p class="instructions"><Strong>Login to submit your jokes!</Strong></p>
+          <input class="submit-input" type="text" id="login-email" placeholder="Email">
+          <input class="submit-input" type="password" id="login-password" placeholder="Password">
+          <button id="login-button" class="user-buttons">Login</button>
+          <p id="create-label">Don't have an account? &nbsp;&nbsp; <button id="create-account-button" class="user-buttons-2">Create Account</button></p>
+        </div>
+        
+        <div id="register-container" class="user-container">
+          <p class="instructions"><Strong>Create Acccount</Strong></p>
+          <input class="submit-input" type="text" id="reg-first-name" placeholder="First Name">
+          <input class="submit-input" type="text" id="reg-last-init" placeholder="Last Initial">
+          <input class="submit-input" type="email" id="reg-email" placeholder="Email">
+          <input class="submit-input" type="password" id="reg-password" placeholder="Password">
+          <input class="submit-input" type="text" id="reg-city" placeholder="City">
+          <input class="submit-input" type="text" id="reg-state" placeholder="State">
+          <div id="confirm-div" class="user-form-div">
+            <input type="checkbox" id="reg-old-enough">
+            <p id="confirm-label">I confirm I am at least 13 years old</p>
+          </div>
+          
+          <button id="register-button" class="user-buttons">Register</button>
+          <p><button id="back-to-login-button" class="user-buttons-2">Back to Login</button></p>
+        </div>
+
+        <div id="submission-container" class="user-container">
+          <p class="instructions"><Strong>Submit A Joke</Strong></p>
+          
+          <div class="user-form-div">
+            <label for="joke-type">Select Joke Type:</label>
+            <select id="joke-type">
+              <option value="">-- Choose a type --</option>
+              <option value="qa">Question / Answer</option>
+              <option value="knock">Knock-Knock</option>
+              <option value="dialogue">Dialogue</option>
+            </select>
+          </div>
+          
+                    <!-- Question/Answer Inputs -->
+          <div id="qa-fields" class="joke-fields" style="display:none;">
+            <input type="text" class="user-input" id="qa-question" placeholder="Enter the question">
+            <input type="text" class="user-input" id="qa-answer" placeholder="Enter the answer">
+          </div>
+
+          <!-- Knock Knock Inputs -->
+          <div id="knock-fields" class="joke-fields" style="display:none;">
+            <!-- Preset template fields; user fills out response parts -->
+            <p>Knock, Knock.</p>
+            <p>Who's There?</p>
+            <input type="text" class="user-input" id="knock-response" placeholder="Fill in 'Who's there?' response">
+            <p>______ Who?</p>
+            <input type="text" class="user-input" id="knock-final" placeholder="Fill in the final answer">
+          </div>
+
+          <!-- Dialogue Inputs -->
+          <div id="dialogue-fields" class="joke-fields" style="display:none;">
+            <div id="dialogue-instructions-div">
+              <p id="dialogue-instructions">Enter the names of the speakers.</p>
+              <p id="dialogue-instructions">Use at least 2 speakers.</p>
+              <p id="dialogue-instructions">(Just leave the extras blank if you don't need them)</p>
+            </div>
+          
+            <input type="text" class="user-input" id="speaker-1" placeholder="Speaker 1 Name">
+            <input type="text" class="user-input" id="dialogue-1" placeholder="Dialogue from Speaker 1">
+            <input type="text" class="user-input" id="speaker-2" placeholder="Speaker 2 Name">
+            <input type="text" class="user-input" id="dialogue-2" placeholder="Dialogue from Speaker 2">
+            <input type="text" class="user-input" id="speaker-3" placeholder="Speaker 3 Name">
+            <input type="text" class="user-input" id="dialogue-3" placeholder="Dialogue from Speaker 4">
+            <input type="text" class="user-input" id="speaker-4" placeholder="Speaker 4 Name">
+            <input type="text" class="user-input" id="dialogue-4" placeholder="Dialogue from Speaker 4">
+            
+          </div>
+
+          
+          <button id="submit-joke-button" class="user-buttons">Submit Joke</button>
+          <p><button id="logout-button" class="user-buttons-2">Logout</button></p>
+        </div>
+
       </section>
 
       
@@ -58,7 +135,7 @@
 
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="js/submit.js"></script>
   </body>
     
 </html>

@@ -136,6 +136,8 @@ b {
   transition: all 0.3s ease-in-out;
 }
 
+
+
 .column {
   width: 33%;
   display: flex;
@@ -445,6 +447,143 @@ form {
 }
 #book-page-img {
   width: 100%;
+}
+
+/* Submit page */
+
+.main-content-submit {
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  justify-content: space-evenly; 
+  align-items: center;
+  /* gap: 0.6rem; */
+  margin-top: 4rem; 
+  margin-left: 1rem;
+  margin-right: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.instructions {
+  width: 75%;
+  height: 5rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  /* margin-top: 2rem; */
+  font-size: 2.6rem;
+  line-height: 4rem;
+}
+
+#message {
+  color: #00AEEF;
+}
+
+.user-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 2rem;
+  margin: 1rem;
+  margin-top: 4rem;
+  width: 100%;
+  font-size: 1.6rem;
+}
+
+.submit-input {
+  font-size: 1.6rem;
+  width: 25rem;
+}
+
+.user-buttons,
+.user-buttons-2 {
+  font-size: 1.6rem;
+  padding-bottom: 0.4rem;
+  width: 20rem;
+  
+  background-color: #00AEEF;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.6rem;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  line-height: 1.8rem;
+  height: 3rem;
+  cursor: pointer;
+}
+
+.user-buttons:hover {
+  background-color: #0093c9;
+}
+.user-buttons-2:hover {
+  background-color: #be353a;
+}
+
+.user-buttons-2 {
+  background-color: #e74a4f;
+}
+
+.user-form-div {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+#confirm-label {
+  line-height: 4rem;
+  padding-bottom: 0.8rem;
+}
+
+select {
+  font-size: 1.6rem;
+}
+
+.user-input {
+  font-size: 1.6rem;
+  height: 3rem;
+  
+}
+
+.joke-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 35%;
+}
+
+#knock-fields {
+  gap: 2rem;
+}
+
+#knock-response,
+#knock-final {
+  margin: 1rem 0;
+}
+
+#dialogue-instructions-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+#dialogue-instructions {
+  line-height: 2.6rem;
+  margin-bottom: 2rem;
+  width: auto;
+}
+
+.visible {
+  display: flex;
+}
+
+.hidden {
+  display: none;
 }
 
 

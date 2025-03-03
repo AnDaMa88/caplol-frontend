@@ -218,32 +218,36 @@ function updatePaginationButtons() {
 
 function adjustColumns() {
     const columns = document.querySelectorAll(".column");
-    
     let visibleColumns = 0;
-
-    
-
+  
     columns.forEach(column => {
-        const isHidden = column.querySelector(".hidden");
-        if (isHidden) {
-            column.style.display = "none";
-            
-        } else {
-            column.style.display = "flex";
-            visibleColumns++;
+      // Get all joke containers within the column
+      const jokeContainers = column.querySelectorAll(".text-joke-container");
+      let hasVisibleJoke = false;
+      jokeContainers.forEach(container => {
+        // If any container is not hidden (i.e. display is not "none"), mark the column as having content.
+        if (container.style.display !== "none") {
+            hasVisibleJoke = true;
         }
+      });
+      if (hasVisibleJoke) {
+        column.style.display = "flex";
+        visibleColumns++;
+      } else {
+        column.style.display = "none";
+      }
     });
-
+  
+    // Adjust the main content container's justification based on the number of visible columns.
     const mainContent = document.querySelector(".main-content");
-    if (visibleColumns === 2) {
-        mainContent.style.justifyContent = "center";
-    } else if (visibleColumns === 1) {
-        mainContent.style.justifyContent = "center";
-        // columns.forEach(column => column.style.width = "50%");
+    if (visibleColumns === 1) {
+      mainContent.style.justifyContent = "center";
+    } else if (visibleColumns === 2) {
+      mainContent.style.justifyContent = "center";
     } else {
-        mainContent.style.justifyContent = "space-evenly";
+      mainContent.style.justifyContent = "space-evenly";
     }
-}
+  }
 
 async function hideLoadingScreen() {
     try {
@@ -264,4 +268,7 @@ function showLoadingScreen() {
     document.getElementById('loader').style.display = 'flex';
     document.querySelector('.main-content').style.display = 'none';
 }
+
+
 //end
+
