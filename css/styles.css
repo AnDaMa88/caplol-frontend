@@ -586,6 +586,13 @@ select {
   display: none;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
 
 @media (max-width: 1300px) {
   .main-content {

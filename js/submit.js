@@ -17,6 +17,8 @@ function showLoadingScreen() {
     document.querySelector('.main-content').style.display = 'none';
 }
 
+
+//log in
 const loginButton = document.getElementById('login-button');
 loginButton.addEventListener('click', function() {
     const email = document.getElementById('login-email').value;
@@ -45,8 +47,15 @@ loginButton.addEventListener('click', function() {
     });
 });
 
-const registerButton = document.getElementById('register-button');
-registerButton.addEventListener('click', function() {
+const registerform = document.getElementById('register-form');
+registerform.addEventListener('submit', function(event) {
+
+    event.preventDefault();
+    if (!this.checkValidity()) {
+        this.reportValidity();
+        return;
+    }
+
     const firstName = document.getElementById('reg-first-name').value;
     const lastInitial = document.getElementById('reg-last-init').value;
     const email = document.getElementById('reg-email').value;
@@ -54,6 +63,7 @@ registerButton.addEventListener('click', function() {
     const city = document.getElementById('reg-city').value;
     const state = document.getElementById('reg-state').value;
     const oldEnough = document.getElementById('reg-old-enough').checked;
+
     fetch('http://localhost:8080/users/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -158,7 +168,7 @@ submitJokeButton.addEventListener('click', function() {
                     <span class="dialogue-1">${speaker2}: </span>${dialogue2}`;
         if (speaker3 !== "" && dialogue3 !== "") {
             jokeText += `<br>
-                         <span class="dialogue-1">${speaker3}: </span>${dialogue3}<br>`;
+                         <span class="dialogue-1">${speaker3}: </span>${dialogue3}`;
         }
         if (speaker4 !== "" && dialogue4 !== "") {
             jokeText += `<br>
@@ -181,19 +191,38 @@ submitJokeButton.addEventListener('click', function() {
     body: JSON.stringify({ jokeText })
     })
     .then(response => {
-    if (response.ok) return response.text();
-    if (response.status === 401) throw new Error("Session expired, please log in again.");
-    throw new Error("Joke submission failed");
-    })
+        if (response.ok) {
+          return response.text();
+        } else {
+          // Read the backend error message from the response body
+          return response.text().then(text => {
+            // If the response text is empty, use a fallback message
+            throw new Error(text || (response.status === 401 ? "Session expired, please log in again." : "Joke submission failed"));
+          });
+        }
+      })
     .then(message => {
     document.getElementById('message').textContent = message;
-    // Optionally, clear the inputs
+    document.getElementById('submission-container').classList.remove('visible');
+    document.getElementById('submission-container').classList.add('hidden');
     })
     .catch(error => {
     document.getElementById('message').textContent = error.message;
+    document.getElementById('submission-container').classList.remove('visible');
+    document.getElementById('submission-container').classList.add('hidden');
     if (error.message.includes("expired")) {
         localStorage.removeItem('jwtToken');
         toggleContainer('login-container');
     }
     });
+});
+
+// Handle Logout
+document.getElementById('logout-button').addEventListener('click', function() {
+    localStorage.removeItem('jwtToken');
+    document.getElementById('message').textContent = "Logged out successfully.";
+    document.getElementById('login-email').value = "";
+    document.getElementById('login-password').value = "";
+    toggleContainer('login-container');
+      
 });

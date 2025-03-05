@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Captain LOL Jokes</title>
+    <meta name="description" content="Site for Captain LOL Book and Jokes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+
+  <body>
+    <div id="page-wrapper">
+
+      <header id="header">
+        <img class="banner-img" id="header-img" alt="CAP LOL LOGO banner" src="images/banner3.png" >
+        <nav id="nav-bar">
+          <a class="nav-link" id="book-button" href="book.html">Get The Book!</a>
+          <a class="nav-link" id="merch-button" href="merch.html">Merch</a>
+          <a class="nav-link" id="about-button" href="about.html">About Yoe!</a>
+          <a class="nav-link" id="jokes-button" href="index.html">Jokes</a>
+          <a class="nav-link" id="submit-jokes-button" href="submit.html">Submit Your Jokes!</a>   
+        </nav>   
+      </header>
+
+      
+
+      <hr class="top-line">
+
+      <div id="loader" class="loader">   
+        <p> </p>
+      </div>
+
+      <section class="main-content-submit">
+        <p id="message" class="instructions"></p>
+        
+
+        <div id="login-container" class="user-container">
+          <p class="instructions"><Strong>Moderator Login</Strong></p>
+          <input class="submit-input" type="email" id="login-email" placeholder="Email" required>
+          <input class="submit-input" type="password" id="login-password" placeholder="Password" minlength="8" 
+          pattern="(?=.*\d)(?=.*[!@#$%^&*]).{8,}" title="Password must be at least 8 characters long and include a number and a special character" required>
+          <button id="login-button" class="user-buttons">Login</button>
+        </div>
+        
+        
+
+        <div id="moderator-container" class="user-container">
+          <p class="instructions"><Strong>Mod Panel</Strong></p>
+          
+        
+
+          
+          <button id="pending-button" class="user-buttons">Show Pending Jokes</button>
+          <p><button id="logout-button" class="user-buttons-2">Logout</button></p>
+        </div>
+
+        <div id="pending-container" class="user-container">
+            <div class="text-joke-container border-style-1">
+                <div class="text-joke">
+                  <p><b>ALLISON: </b>What’s Darth Vader’s favorite candy?<br>
+                  <b>SARAH: </b>I don’t know.<br>
+                  <b>ALLISON: </b>Dark chocolate.</p>
+                </div>
+                <br>
+                <p class="joke-credit">Joke by Allison J., Little Rock, Arkansas</p>
+                <div class="separator"></div>
+              </div>
+        </div>
+
+      </section>
+
+      
+
+      <footer>
+        <div id="contact-section">
+          <h2 id ="contact-text">Contact Us: &nbsp; yoe@yoe.com</h2>
+          <div id="mailing-list-container">
+            <h2 id="mailing-list-label">Join Our Mailing List!</h2>
+            <form id="form" action="https://www.freecodecamp.com/email-submit" method="POST">
+              <input name="email" id="email" type="email" placeholder="Enter your email address" required></input>
+              <input id="submit" type="submit" value="Submit">
+            </form>
+          </div>
+        </div>
+        <p id="copyright">&copy; 2025 YOE! All rights reserved.</p> 
+      </footer>
+
+    </div>
+
+    <script src="js/mod.js"></script>
+  </body>
+    
+</html>

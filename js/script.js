@@ -260,6 +260,7 @@ async function hideLoadingScreen() {
         setTimeout(() => {
           document.getElementById('loader').style.display = 'none';
           document.querySelector('.main-content').style.display = 'flex';
+          document.querySelector('#book-section').style.display = 'flex';
         }, 500); // 2000 milliseconds = 2 seconds
       }
 }
@@ -267,6 +268,7 @@ async function hideLoadingScreen() {
 function showLoadingScreen() {
     document.getElementById('loader').style.display = 'flex';
     document.querySelector('.main-content').style.display = 'none';
+    document.querySelector('#book-section').style.display = 'none';
 }
 
 

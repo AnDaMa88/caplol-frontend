@@ -39,27 +39,32 @@
 
         <div id="login-container" class="user-container">
           <p class="instructions"><Strong>Login to submit your jokes!</Strong></p>
-          <input class="submit-input" type="text" id="login-email" placeholder="Email">
-          <input class="submit-input" type="password" id="login-password" placeholder="Password">
+          <input class="submit-input" type="email" id="login-email" placeholder="Email" required>
+          <input class="submit-input" type="password" id="login-password" placeholder="Password" minlength="8" 
+          pattern="(?=.*\d)(?=.*[!@#$%^&*]).{8,}" title="Password must be at least 8 characters long and include a number and a special character" required>
           <button id="login-button" class="user-buttons">Login</button>
           <p id="create-label">Don't have an account? &nbsp;&nbsp; <button id="create-account-button" class="user-buttons-2">Create Account</button></p>
         </div>
         
         <div id="register-container" class="user-container">
           <p class="instructions"><Strong>Create Acccount</Strong></p>
-          <input class="submit-input" type="text" id="reg-first-name" placeholder="First Name">
-          <input class="submit-input" type="text" id="reg-last-init" placeholder="Last Initial">
-          <input class="submit-input" type="email" id="reg-email" placeholder="Email">
-          <input class="submit-input" type="password" id="reg-password" placeholder="Password">
-          <input class="submit-input" type="text" id="reg-city" placeholder="City">
-          <input class="submit-input" type="text" id="reg-state" placeholder="State">
-          <div id="confirm-div" class="user-form-div">
-            <input type="checkbox" id="reg-old-enough">
-            <p id="confirm-label">I confirm I am at least 13 years old</p>
-          </div>
+          <form id="register-form">
+            <input class="submit-input" type="text" id="reg-first-name" placeholder="First Name" pattern="[A-Z][a-zA-Z]*" title="First letter must be capital and only letters are allowed" required>
+            <input class="submit-input" type="text" id="reg-last-init" placeholder="Last Initial" pattern="[A-Z]" title="Enter a single capital letter" required>
+            <input class="submit-input" type="email" id="reg-email" placeholder="Email">
+            <input class="submit-input" type="password" id="reg-password" placeholder="Password" minlength="8" pattern="(?=.*\d)(?=.*[!@#$%^&*]).{8,}" title="Password must be at least 8 characters long and include a number and a special character" required>
+            <input class="submit-input" type="text" id="reg-city" placeholder="City/Town" pattern="[A-Z][a-zA-Z ]*" title="City should start with a capital letter and contain only letters and spaces" required>
+            <input class="submit-input" type="text" id="reg-state" placeholder="State/Province" pattern="[A-Z][a-zA-Z ]*" title="State should start with a capital letter and contain only letters and spaces" required>
+            <div id="confirm-div" class="user-form-div">
+              <input type="checkbox" id="reg-old-enough">
+              <p id="confirm-label">I confirm I am at least 13 years old</p>
+            </div>
+            
+            <button id="register-button" class="user-buttons">Register</button>
+            <p><button id="back-to-login-button" class="user-buttons-2">Back to Login</button></p>
+          </form>
           
-          <button id="register-button" class="user-buttons">Register</button>
-          <p><button id="back-to-login-button" class="user-buttons-2">Back to Login</button></p>
+          
         </div>
 
         <div id="submission-container" class="user-container">
