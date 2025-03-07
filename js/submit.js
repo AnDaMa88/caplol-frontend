@@ -23,7 +23,7 @@ const loginButton = document.getElementById('login-button');
 loginButton.addEventListener('click', function() {
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
-    fetch('http://localhost:8080/users/login', {
+    fetch('/users/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -64,7 +64,7 @@ registerform.addEventListener('submit', function(event) {
     const state = document.getElementById('reg-state').value;
     const oldEnough = document.getElementById('reg-old-enough').checked;
 
-    fetch('http://localhost:8080/users/register', {
+    fetch('/users/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -182,7 +182,7 @@ submitJokeButton.addEventListener('click', function() {
         toggleContainer('login-container');
         return;
     }
-    fetch('http://localhost:8080/api/jokes/submit', {
+    fetch('/api/jokes/submit', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
