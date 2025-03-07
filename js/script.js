@@ -272,5 +272,34 @@ function showLoadingScreen() {
 }
 
 
+document.getElementById('mailing-list-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+  
+    // Validate the form (the browser should already do this if the field is 'required')
+    if (!this.checkValidity()) {
+      this.reportValidity();
+      return;
+    }
+  
+    const email = document.getElementById('mailing-list-email').value;
+  
+    fetch('http://localhost:8080/api/mailing-list/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    })
+    .then(response => {
+      if (response.ok) return response.text();
+      else return response.text().then(text => { throw new Error(text || "Subscription failed"); });
+    })
+    .then(message => {
+      document.getElementById('mailing-list-message').textContent = message;
+      // Optionally clear the email field after successful subscription
+      document.getElementById('mailing-list-email').value = "";
+    })
+    .catch(error => {
+      document.getElementById('mailing-list-message').textContent = error.message;
+    });
+  });
 //end
 

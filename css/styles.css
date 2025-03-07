@@ -401,18 +401,33 @@ footer {
   gap: 1.8rem;
 }
 
-#contact-text {
+/* #contact-text {
   margin-top: 2rem;
+} */
+
+/* #mailing-list-label {
+  margin-top: 2rem;
+} */
+
+#mailing-list-form {
+  display: flex;
+  flex-direction: row;
 }
 
-#mailing-list-label {
-  margin-top: 2rem;
+#mailing-list-email,
+#mailing-list-submit {
+  padding: 0.8rem;
+  font-size: 1.6rem;
 }
 
-form {
-  font-size: 3.6rem;
-  margin: 0;
-  padding: 0;
+#mailing-list-submit {
+  border: none;
+  font-family: 'Benoda-Text', 'Lato', sans-serif;
+  padding-top: 0;
+}
+
+#mailing-list-message {
+  margin-top: 1rem;
 }
 
 #copyright {
@@ -762,10 +777,10 @@ form {
     padding: 0;
   }
   #mailing-list-container{
-    display: block;
-    /* flex-direction: column;
+    display: flex;
+    flex-direction: column;
     justify-content: space-around;
-    align-items: center; */
+    align-items: center;
   }
 
   #mailing-list-label {
@@ -790,5 +805,124 @@ form {
     font-size: 1.8rem;
     line-height: 2.8rem;
   }
+
+
+  .instructions {
+    width: 95%;
+    height: 5rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: 2rem; */
+    font-size: 1.6rem;
+    line-height: 4rem;
+  }
   
+  #message {
+    
+  }
+  
+  
+  
+  .submit-input {
+    font-size: 1.6rem;
+    width: 25rem;
+  }
+  
+  .user-buttons,
+  .user-buttons-2 {
+    font-size: 1.6rem;
+    padding-bottom: 0.4rem;
+    width: 20rem;
+    
+    
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.4rem;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+    line-height: 1.8rem;
+    height: 3rem;
+    cursor: pointer;
+  }
+  
+
+  
+  .user-form-div {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+  
+  #confirm-label {
+    line-height: 4rem;
+    padding-bottom: 0.8rem;
+  }
+  
+  select {
+    font-size: 1.6rem;
+  }
+  
+  .user-input {
+    font-size: 1.6rem;
+    height: 3rem;
+    
+  }
+  
+  .joke-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 95%;
+  }
+  
+  #knock-fields {
+    gap: 2rem;
+  }
+  
+  #knock-response,
+  #knock-final {
+    margin: 1rem 0;
+  }
+  
+  #dialogue-instructions-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  #dialogue-instructions {
+    line-height: 2.6rem;
+    margin-bottom: 2rem;
+    width: auto;
+  }
+  
+  .visible {
+    display: flex;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  #create-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
 }
