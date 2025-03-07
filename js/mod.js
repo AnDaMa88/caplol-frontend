@@ -38,7 +38,7 @@ const loginButton = document.getElementById('login-button');
 loginButton.addEventListener('click', function() {
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
-    fetch('http://localhost:8080/users/login', {
+    fetch('/users/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -76,7 +76,7 @@ document.getElementById('logout-button').addEventListener('click', function() {
 //show pending
 document.getElementById('pending-button').addEventListener('click', function() {
     const token = localStorage.getItem('jwtToken');
-    fetch('http://localhost:8080/moderator/jokes/pending', {
+    fetch('/moderator/jokes/pending', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -142,7 +142,7 @@ document.getElementById('pending-button').addEventListener('click', function() {
   //approve
   function approveJoke(jokeId) {
     const token = localStorage.getItem('jwtToken');
-    fetch(`http://localhost:8080/moderator/jokes/${jokeId}/approve`, {
+    fetch(`/moderator/jokes/${jokeId}/approve`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -171,7 +171,7 @@ document.getElementById('pending-button').addEventListener('click', function() {
 //delete joke
 function deleteJoke(jokeId) {
     const token = localStorage.getItem('jwtToken');
-    fetch(`http://localhost:8080/moderator/jokes/${jokeId}/delete`, {
+    fetch(`/moderator/jokes/${jokeId}/delete`, {
       method: 'POST',  // or DELETE if your backend is configured to accept DELETE
       headers: {
         'Content-Type': 'application/json',
