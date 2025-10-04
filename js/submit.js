@@ -23,7 +23,7 @@ const loginButton = document.getElementById('login-button');
 loginButton.addEventListener('click', function() {
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
-    fetch('http://localhost:8080/users/login', {
+    fetch('/users/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -64,7 +64,7 @@ registerform.addEventListener('submit', function(event) {
     const state = document.getElementById('reg-state').value;
     const oldEnough = document.getElementById('reg-old-enough').checked;
 
-    fetch('http://localhost:8080/users/register', {
+    fetch('/users/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -182,7 +182,7 @@ submitJokeButton.addEventListener('click', function() {
         toggleContainer('login-container');
         return;
     }
-    fetch('http://localhost:8080/api/jokes/submit', {
+    fetch('/api/jokes/submit', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
@@ -225,4 +225,23 @@ document.getElementById('logout-button').addEventListener('click', function() {
     document.getElementById('login-password').value = "";
     toggleContainer('login-container');
       
+});
+
+//handle tooltips
+document.querySelectorAll('#register-form input.submit-input').forEach(input => {
+  input.addEventListener('focus', function() {
+    // Assuming the tooltip is the very next sibling
+    const tooltip = this.nextElementSibling;
+    if (tooltip && tooltip.classList.contains('tooltip')) {
+      tooltip.textContent = this.getAttribute('title');
+      tooltip.style.display = 'flex';
+    }
+  });
+  
+  input.addEventListener('blur', function() {
+    const tooltip = this.nextElementSibling;
+    if (tooltip && tooltip.classList.contains('tooltip')) {
+      tooltip.style.display = 'none';
+    }
+  });
 });

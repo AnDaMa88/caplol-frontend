@@ -18,9 +18,9 @@
         <img class="banner-img" id="header-img" alt="CAP LOL LOGO banner" src="images/banner3.png" >
         <nav id="nav-bar">
           <a class="nav-link" id="book-button" href="book.html">Get The Book!</a>
-          <a class="nav-link" id="merch-button" href="merch.html">Merch</a>
+          <a class="nav-link" id="merch-button" href="merch.html">Merch!</a>
           <a class="nav-link" id="about-button" href="about.html">About Yoe!</a>
-          <a class="nav-link" id="jokes-button" href="index.html">Jokes</a>
+          <a class="nav-link" id="jokes-button" href="index.html">Jokes!</a>
           <a class="nav-link" id="submit-jokes-button" href="submit.html">Submit Your Jokes!</a>   
         </nav>   
       </header>
@@ -34,7 +34,10 @@
       </div>
 
       <section class="main-content-submit">
-        <p id="message" class="instructions"></p>
+
+      	<div id="instructions-container">
+      	  <p id="message" class="instructions"></p>
+      	</div>
         
 
         <div id="login-container" class="user-container">
@@ -50,11 +53,17 @@
           <p class="instructions"><Strong>Create Acccount</Strong></p>
           <form id="register-form">
             <input class="submit-input" type="text" id="reg-first-name" placeholder="First Name" pattern="[A-Z][a-zA-Z]*" title="First letter must be capital and only letters are allowed" required>
+            <div class="tooltip"></div>
             <input class="submit-input" type="text" id="reg-last-init" placeholder="Last Initial" pattern="[A-Z]" title="Enter a single capital letter" required>
+			<div class="tooltip"></div>
             <input class="submit-input" type="email" id="reg-email" placeholder="Email">
+            <div class="tooltip"></div>
             <input class="submit-input" type="password" id="reg-password" placeholder="Password" minlength="8" pattern="(?=.*\d)(?=.*[!@#$%^&*]).{8,}" title="Password must be at least 8 characters long and include a number and a special character" required>
+			<div class="tooltip"></div>
             <input class="submit-input" type="text" id="reg-city" placeholder="City/Town" pattern="[A-Z][a-zA-Z ]*" title="City should start with a capital letter and contain only letters and spaces" required>
+			<div class="tooltip"></div>
             <input class="submit-input" type="text" id="reg-state" placeholder="State/Province" pattern="[A-Z][a-zA-Z ]*" title="State should start with a capital letter and contain only letters and spaces" required>
+			<div class="tooltip"></div>
             <div id="confirm-div" class="user-form-div">
               <input type="checkbox" id="reg-old-enough">
               <p id="confirm-label">I confirm I am at least 13 years old</p>
@@ -124,19 +133,24 @@
 
       
 
-      <footer>
+	  <footer>
         <div id="contact-section">
-          <h2 id ="contact-text">Contact Us: &nbsp; yoe@yoe.com</h2>
+          <h2 id="contact-text">Contact Us: &nbsp; mail@captainlol.fun</h2>
           <div id="mailing-list-container">
             <h2 id="mailing-list-label">Join Our Mailing List!</h2>
-            <form id="form" action="https://www.freecodecamp.com/email-submit" method="POST">
-              <input name="email" id="email" type="email" placeholder="Enter your email address" required></input>
-              <input id="submit" type="submit" value="Submit">
+            <form id="mailing-list-form">
+              <input id="mailing-list-email" type="email" placeholder="Enter your email address" required="">
+              <button type="submit" id="mailing-list-submit" class="nav-link">Submit</button>
             </form>
-          </div>
+          </div>      
         </div>
-        <p id="copyright">&copy; 2025 YOE! All rights reserved.</p> 
-      </footer>
+        <p id="mailing-list-message"></p>
+        <p class="copyright">© 2025 Gussoni-Yoe Studios, Inc. &nbsp;&nbsp;&nbsp;&nbsp; 
+        Captain LOL and Rubber Chicken™ &nbsp;
+        are trademarks of Gussoni-Yoe Studio, Inc.</p>
+        
+        <p class="copyright"> Built and maintained by Stonebreaker Development</p> 
+      </footer>      
 
     </div>
 
